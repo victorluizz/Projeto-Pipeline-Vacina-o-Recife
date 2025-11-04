@@ -1,0 +1,88 @@
+[0m00:09:44.340896 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D03F0D2BA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D040473ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D040473890>]}
+
+
+============================== 00:09:44.345956 | a3502bd8-5cb2-4856-9332-6ffb6932c86f ==============================
+[0m00:09:44.345956 [info ] [MainThread]: Running with dbt=1.10.13
+[0m00:09:44.347164 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'printer_width': '80', 'profiles_dir': 'C:\\Users\\victo\\.dbt', 'use_colors': 'True', 'write_json': 'True', 'warn_error': 'None', 'log_path': 'logs', 'fail_fast': 'False', 'indirect_selection': 'eager', 'send_anonymous_usage_stats': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'version_check': 'True', 'use_experimental_parser': 'False', 'introspect': 'True', 'quiet': 'False', 'empty': 'None', 'log_cache_events': 'False', 'debug': 'False', 'log_format': 'default', 'invocation_command': 'dbt init transformacao_vacinados', 'cache_selected_only': 'False', 'target_path': 'None'}
+[0m00:09:44.385802 [info ] [MainThread]: Creating dbt configuration folder at C:\Users\victo\.dbt
+[0m00:09:44.388527 [debug] [MainThread]: Starter project path: c:\Users\victo\AppData\Local\Programs\Python\Python313\Lib\site-packages\dbt\include\starter_project
+[0m00:09:44.427285 [info ] [MainThread]: 
+Your new dbt project "transformacao_vacinados" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m00:09:44.428177 [info ] [MainThread]: Setting up your profile.
+[0m00:11:37.659668 [info ] [MainThread]: Profile transformacao_vacinados written to C:\Users\victo\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m00:11:37.660979 [debug] [MainThread]: Command `dbt init` succeeded at 00:11:37.660790 after 113.54 seconds
+[0m00:11:37.661392 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D04051F6F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D040684B90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001D040311F20>]}
+[0m00:11:37.661724 [debug] [MainThread]: Flushing usage events
+[0m00:11:38.475689 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m00:12:12.389929 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C3E6DABA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C3FA57ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C3FA57890>]}
+
+
+============================== 00:12:12.396384 | 8d3f3087-4568-4831-9123-ffece38b783a ==============================
+[0m00:12:12.396384 [info ] [MainThread]: Running with dbt=1.10.13
+[0m00:12:12.397543 [debug] [MainThread]: running dbt with arguments {'log_format': 'default', 'no_print': 'None', 'target_path': 'None', 'invocation_command': 'dbt debug', 'printer_width': '80', 'warn_error': 'None', 'static_parser': 'True', 'partial_parse': 'True', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'log_path': 'logs', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'indirect_selection': 'eager', 'version_check': 'True', 'use_experimental_parser': 'False', 'quiet': 'False', 'introspect': 'True', 'empty': 'None', 'log_cache_events': 'False', 'debug': 'False', 'profiles_dir': 'C:\\Users\\victo\\.dbt', 'use_colors': 'True', 'cache_selected_only': 'False', 'write_json': 'True'}
+[0m00:12:12.418255 [info ] [MainThread]: dbt version: 1.10.13
+[0m00:12:12.419162 [info ] [MainThread]: python version: 3.13.2
+[0m00:12:12.420372 [info ] [MainThread]: python path: c:\Users\victo\AppData\Local\Programs\Python\Python313\python.exe
+[0m00:12:12.421229 [info ] [MainThread]: os info: Windows-11-10.0.26100-SP0
+[0m00:12:12.486911 [info ] [MainThread]: Using profiles dir at C:\Users\victo\.dbt
+[0m00:12:12.487454 [info ] [MainThread]: Using profiles.yml file at C:\Users\victo\.dbt\profiles.yml
+[0m00:12:12.487801 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\victo\OneDrive\Documentos\UFPE\Ciência da Computação\Monitoria BD\Projeto-Pipeline-Vacina-o-Recife\dbt_project.yml
+[0m00:12:12.488972 [info ] [MainThread]: adapter type: postgres
+[0m00:12:12.489473 [info ] [MainThread]: adapter version: 1.9.1
+[0m00:12:12.489916 [info ] [MainThread]: Configuration:
+[0m00:12:12.490320 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m00:12:12.490692 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m00:12:12.491123 [info ] [MainThread]: Required dependencies:
+[0m00:12:12.491675 [debug] [MainThread]: Executing "git --help"
+[0m00:12:12.533143 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m00:12:12.533694 [debug] [MainThread]: STDERR: "b''"
+[0m00:12:12.534222 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m00:12:12.534715 [info ] [MainThread]: Connection:
+[0m00:12:12.535149 [info ] [MainThread]:   host: localhost
+[0m00:12:12.535537 [info ] [MainThread]:   port: 5432
+[0m00:12:12.535991 [info ] [MainThread]:   user: postgres
+[0m00:12:12.536381 [info ] [MainThread]:   database: projeto_monitoria
+[0m00:12:12.536768 [info ] [MainThread]:   schema: public
+[0m00:12:12.537222 [info ] [MainThread]:   connect_timeout: 10
+[0m00:12:12.537596 [info ] [MainThread]:   role: None
+[0m00:12:12.537965 [info ] [MainThread]:   search_path: None
+[0m00:12:12.538332 [info ] [MainThread]:   keepalives_idle: 0
+[0m00:12:12.538690 [info ] [MainThread]:   sslmode: None
+[0m00:12:12.539057 [info ] [MainThread]:   sslcert: None
+[0m00:12:12.539498 [info ] [MainThread]:   sslkey: None
+[0m00:12:12.539828 [info ] [MainThread]:   sslrootcert: None
+[0m00:12:12.540492 [info ] [MainThread]:   application_name: dbt
+[0m00:12:12.541125 [info ] [MainThread]:   retries: 1
+[0m00:12:12.541939 [info ] [MainThread]: Registered adapter: postgres=1.9.1
+[0m00:12:12.843647 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m00:12:16.198491 [debug] [MainThread]: Using postgres connection "debug"
+[0m00:12:16.198906 [debug] [MainThread]: On debug: select 1 as id
+[0m00:12:16.199152 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m00:12:16.275240 [debug] [MainThread]: SQL status: SELECT 1 in 0.076 seconds
+[0m00:12:16.277030 [debug] [MainThread]: On debug: Close
+[0m00:12:16.277545 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m00:12:16.278206 [info ] [MainThread]: [31m1 check failed:[0m
+[0m00:12:16.279103 [info ] [MainThread]: Project loading failed for the following reason:
+ project path <C:\Users\victo\OneDrive\Documentos\UFPE\Ciência da Computação\Monitoria BD\Projeto-Pipeline-Vacina-o-Recife\dbt_project.yml> not found
+
+[0m00:12:16.280447 [debug] [MainThread]: Command `dbt debug` failed at 00:12:16.280230 after 4.12 seconds
+[0m00:12:16.280898 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m00:12:16.281261 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C40FF90F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C3FC86C30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C3E6A2CF0>]}
+[0m00:12:16.281624 [debug] [MainThread]: Flushing usage events
+[0m00:12:16.698150 [debug] [MainThread]: An error was encountered while trying to flush usage events
