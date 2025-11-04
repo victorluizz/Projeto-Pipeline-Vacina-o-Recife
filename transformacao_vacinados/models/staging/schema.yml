@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+
+  - name: dados_brutos_recife
+
+    database: projeto_monitoria
+    schema: public
+    
+    tables:
+      - name: raw_vacinados_2022
+      - name: raw_vacinados_2023
+      - name: raw_vacinados_2024
