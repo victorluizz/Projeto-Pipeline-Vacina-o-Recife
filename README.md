@@ -130,7 +130,7 @@ Este pipeline tem duas etapas:
     dbt run
     ```
 
-## 📊 Análise (Próximos Passos)
+## 📊 Análise
 
 Com a tabela `vacinados_etl_final` (criada por qualquer um dos pipelines) pronta no banco, podemos realizar as análises.
 
