@@ -1,0 +1,10 @@
+# Arquivos de cache do Python
+__pycache__/
+*.pyc
+
+# Arquivos de ambiente virtual (se você usar)
+venv/
+.venv/
+
+# Arquivos do Jupyter Notebook (checkpoints)
+.ipynb_checkpoints/
