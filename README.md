@@ -30,7 +30,7 @@ O projeto utiliza um conjunto de dados públicos do Portal de Dados Abertos da P
 │   └── dados_vacinados_2024.csv
 ├── notebooks/
 │   ├── ETL.ipynb                 (Pipeline ETL completo com Pandas)
-│   └── ELT_load.ipynb            (Etapa "EL" do pipeline ELT - Carga bruta)
+│   └── ELT.ipynb            (Etapa "EL" do pipeline ELT - Carga bruta)
 ├── transformacao_vacinados/      (Projeto dbt para a etapa "T")
 │   ├── models/
 │   │   ├── staging/
@@ -110,7 +110,7 @@ Este pipeline tem duas etapas:
 **Etapa 1: Carga (EL)**
 
 1.  Abra e execute todas as células do notebook:
-    `notebooks/ELT_load.ipynb`
+    `notebooks/ELT.ipynb`
 2.  Isso carregará os 3 CSVs **brutos** em 3 tabelas separadas no PostgreSQL: `raw_vacinados_2022`, `raw_vacinados_2023` e `raw_vacinados_2024`.
 
 **Etapa 2: Transformação (T)**
