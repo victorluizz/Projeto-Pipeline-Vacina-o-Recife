@@ -1,5 +1,3 @@
-# Projeto-Pipeline-Vacina-o-Recife
-
 # Projeto de Pipeline de Dados (ETL vs. ELT) - Vacinados Recife
 
 Este repositório é um projeto de estudo para a monitoria de Banco de Dados, focado em demonstrar, construir e comparar duas abordagens de pipeline de dados: **ETL (Extract, Transform, Load)** e **ELT (Extract, Load, Transform)**.
