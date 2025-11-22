@@ -86,3 +86,18 @@ Happy modeling!
 [0m00:12:16.281261 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C40FF90F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C3FC86C30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020C3E6A2CF0>]}
 [0m00:12:16.281624 [debug] [MainThread]: Flushing usage events
 [0m00:12:16.698150 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:03:51.305282 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212AFD0ABA0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212B1097ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212B1097890>]}
+
+
+============================== 15:03:51.312306 | 978fef9c-41fd-47e8-8a9a-1a6d21bf4a88 ==============================
+[0m15:03:51.312306 [info ] [MainThread]: Running with dbt=1.10.13
+[0m15:03:51.315795 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'no_print': 'None', 'log_format': 'default', 'write_json': 'True', 'invocation_command': 'dbt run', 'warn_error': 'None', 'log_path': 'logs', 'partial_parse': 'True', 'indirect_selection': 'eager', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'version_check': 'True', 'use_experimental_parser': 'False', 'quiet': 'False', 'introspect': 'True', 'empty': 'False', 'log_cache_events': 'False', 'debug': 'False', 'profiles_dir': 'C:\\Users\\victo\\.dbt', 'use_colors': 'True', 'cache_selected_only': 'False', 'target_path': 'None'}
+[0m15:03:51.316726 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\victo\OneDrive\Documentos\UFPE\Ciência da Computação\Monitoria BD\Projeto-Pipeline-Vacina-o-Recife\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m15:03:51.318019 [debug] [MainThread]: Command `dbt run` failed at 15:03:51.317852 after 0.27 seconds
+[0m15:03:51.318410 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212B0F9F490>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212B0FB5370>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000212B0F43AC0>]}
+[0m15:03:51.318760 [debug] [MainThread]: Flushing usage events
+[0m15:03:51.979577 [debug] [MainThread]: An error was encountered while trying to flush usage events

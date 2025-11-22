@@ -2,7 +2,7 @@
 {{
 
     config(
-        materialized='table'
+        materialized='view'
     )
 }}
 
@@ -145,15 +145,7 @@ limpeza_final AS (
     WHERE 
         idade IS NOT NULL 
         AND municipio IS NOT NULL
-),
-
-
-adicionar_id_unico AS (
-    SELECT
-        ROW_NUMBER() OVER (ORDER BY data_vacinacao, id_vacina) AS id,
-        *
-    FROM
-        limpeza_final
 )
 
-select * from adicionar_id_unico
+
+SELECT * FROM limpeza_final
