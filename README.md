@@ -1,9 +1,3 @@
-Com certeza\! Este README vai ser o "cartão de visitas" do seu projeto. Ele precisa destacar não só o código, mas a **arquitetura de dados** (o Esquema Estrela) que você construiu, pois isso mostra maturidade técnica.
-
-Aqui está uma versão profissional e completa. Pode copiar e colar no seu `README.md`.
-
------
-
 # 💉 Pipeline de Dados: Monitoramento de Vacinação COVID-19 (Recife)
 
 > **Projeto da Monitoria de Banco de Dados (2025.2) - CIn/UFPE**
