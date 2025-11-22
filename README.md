@@ -1,148 +1,139 @@
-# Projeto de Pipeline de Dados (ETL vs. ELT) - Vacinados Recife
+Com certeza\! Este README vai ser o "cartão de visitas" do seu projeto. Ele precisa destacar não só o código, mas a **arquitetura de dados** (o Esquema Estrela) que você construiu, pois isso mostra maturidade técnica.
 
-Este repositório é um projeto de estudo para a monitoria de Banco de Dados, focado em demonstrar, construir e comparar duas abordagens de pipeline de dados: **ETL (Extract, Transform, Load)** e **ELT (Extract, Load, Transform)**.
+Aqui está uma versão profissional e completa. Pode copiar e colar no seu `README.md`.
 
-O projeto utiliza um conjunto de dados públicos do Portal de Dados Abertos da Prefeitura do Recife sobre as **Pessoas Vacinadas contra a Covid-19**. O desafio central é a integração de múltiplos arquivos (um para cada ano: 2022, 2023, 2024) em uma base de dados única, limpa e pronta para análise.
+-----
 
-## 🚀 Objetivos do Projeto
+# 💉 Pipeline de Dados: Monitoramento de Vacinação COVID-19 (Recife)
 
-  * **Demonstrar um Pipeline ETL Clássico:** Usando **Python (Pandas)** para extrair, unificar, limpar e transformar os dados em memória antes de carregá-los em um banco de dados.
-  * **Demonstrar um Pipeline ELT Moderno:** Usando **Python** apenas para a Extração e Carga (EL) dos dados brutos e o **dbt (data build tool)** para realizar todas as transformações (T) diretamente no banco de dados com SQL.
-  * **Aplicar Técnicas de Limpeza de Dados:** Lidar com valores nulos, inconsistências de formato e dados redundantes.
-  * **Realizar Engenharia de Atributos:** Quebrar colunas complexas em campos utilizáveis.
-  * **Gerar um "ID Único":** Criar uma chave primária substituta (surrogate key) para a tabela final, já que o `_id` original não era confiável.
+> **Projeto da Monitoria de Banco de Dados (2025.2) - CIn/UFPE**
+
+Este projeto implementa e compara duas arquiteturas fundamentais de Engenharia de Dados — **ETL Clássico** (Python/Pandas) e **ELT Moderno** (dbt/SQL) — para processar, higienizar e modelar dados públicos de vacinação.
+
+O diferencial deste projeto é a implementação final de uma **Modelagem Dimensional (Esquema Estrela)**
+
+[Image of star schema database diagram]
+, transformando milhões de registros brutos em um Data Warehouse otimizado para Business Intelligence (BI).
+
+-----
+
+## 🎯 Objetivo e Desafio
+
+O objetivo foi integrar dados dispersos temporalmente para permitir análises históricas.
+
+  * **Fonte:** [Portal de Dados Abertos do Recife](https://www.google.com/search?q=http://dados.recife.pe.gov.br/dataset/perfil-das-pessoas-vacinadas-covid-19)
+  * **Dados Brutos:** Arquivos CSV separados por ano (2022, 2023, 2024) contendo registros de vacinação.
+  * **Desafio Principal:** Os dados possuiam inconsistências de formato, colunas "sujas" (misturando múltiplos dados em uma string) e ausência de chaves primárias confiáveis.
+
+## 🏗️ Arquitetura da Solução
+
+O projeto constrói o mesmo modelo final através de dois caminhos distintos para fins de comparação:
+
+### 1\. Abordagem ETL (Python Driven)
+
+  * **Extração:** Leitura automatizada dos CSVs.
+  * **Transformação:** Limpeza, deduplicação e modelagem dimensional realizadas inteiramente em memória usando **Pandas**.
+  * **Carga:** Inserção das tabelas finais no PostgreSQL usando SQLAlchemy.
+
+### 2\. Abordagem ELT (Modern Data Stack)
+
+  * **Extração & Carga (EL):** Python é usado apenas para carregar os dados brutos (`raw`) no banco.
+  * **Transformação (T):** O **dbt (data build tool)** orquestra transformações complexas diretamente no banco de dados usando SQL:
+      * **Staging:** Unificação dos anos (`UNION ALL`).
+      * **Intermediate:** Limpeza pesada (Regex, Split, Case When).
+      * **Marts:** Criação das Tabelas Fato e Dimensão.
+
+-----
+
+## ⭐ Modelagem de Dados (Esquema Estrela)
+
+Ao final do pipeline, os dados são organizados em um modelo dimensional para facilitar análises:
+
+| Tabela | Tipo | Descrição |
+| :--- | :--- | :--- |
+| **`fato_vacinacao`** | **Fato** | Registro de cada dose aplicada. Contém as métricas e as chaves estrangeiras (SKs) para as dimensões. |
+| **`dim_paciente`** | Dimensão | Perfil demográfico dos vacinados (Sexo, Raça, Grupo Prioritário). |
+| **`dim_vacina`** | Dimensão | Detalhes do imunizante (Nome normalizado, Fabricante, Público Alvo). |
+| **`dim_unidade`** | Dimensão | Locais de aplicação (Nome da Unidade, CNES, Distrito Sanitário). |
+| **`dim_localidade`** | Dimensão | Hierarquia geográfica de residência (Município, Estado, Região). |
+| **`dim_tempo`** | Dimensão | Calendário detalhado (Dia, Mês, Trimestre) para análises temporais rápidas. |
+
+-----
 
 ## 🛠️ Tecnologias Utilizadas
 
-  * **Linguagem:** Python 3
-  * **Bibliotecas Python:** Pandas, SQLAlchemy, Psycopg2-binary
-  * **Banco de Dados:** PostgreSQL
-  * **Ferramenta de Transformação (ELT):** dbt (dbt-postgres)
-  * **Ambiente:** Jupyter Notebook / VS Code
+  *  **Python 3.10+**: Scripting e manipulação de dados (Pandas).
+  *  **PostgreSQL**: Data Warehouse.
+  *  **dbt Core**: Orquestração de transformações SQL e testes de dados.
+  * **SQLAlchemy & Psycopg2**: Conectores de banco de dados.
+  * **Git/GitHub**: Versionamento de código.
 
-## 📁 Estrutura do Projeto
+-----
+
+## 📂 Estrutura do Repositório
 
 ```
 .
-├── data/
-│   ├── dados_vacinados_2022.csv  (Arquivo de dados brutos)
-│   ├── dados_vacinados_2023.csv
-│   └── dados_vacinados_2024.csv
+├── analysis/                     # Scripts SQL com as análises finais (Insights)
+├── data/                         # Arquivos CSV brutos (ignorados no git)
 ├── notebooks/
-│   ├── ETL.ipynb                 (Pipeline ETL completo com Pandas)
-│   └── ELT.ipynb            (Etapa "EL" do pipeline ELT - Carga bruta)
-├── transformacao_vacinados/      (Projeto dbt para a etapa "T")
+│   ├── ETL.ipynb                 # Pipeline 1: ETL completo em Python
+│   └── ELT_load.ipynb            # Pipeline 2: Carga bruta para o dbt
+├── transformacao_vacinados/      # Projeto dbt (Pipeline 2: Transformação)
 │   ├── models/
-│   │   ├── staging/
-│   │   │   ├── stg_vacinados_unificados.sql  (Unifica as 3 fontes)
-│   │   │   └── schema.yml                    (Define as fontes 'raw')
-│   │   └── marts/
-│   │       └── vacinados_etl_final.sql       (Modelo final com toda a limpeza)
+│   │   ├── staging/              # Unificação dos dados brutos
+│   │   ├── marts/                # Modelos finais (Dimensões e Fato)
+│   │   │   ├── int_vacinados...  # Limpeza intermediária
+│   │   │   ├── dim_...           # Tabelas Dimensão
+│   │   │   └── fato_vacinacao.sql
 │   └── dbt_project.yml
-└── README.md                     (Este arquivo)
+└── README.md
 ```
 
-## ⚙️ Configuração e Instalação
+-----
 
-Siga estes passos para replicar o ambiente do projeto.
+## 🚀 Como Executar
 
 ### Pré-requisitos
 
-  * Python 3.10+
-  * Um servidor PostgreSQL instalado e rodando.
-  * Git (para clonar o projeto).
+1.  Instale Python e PostgreSQL.
+2.  Clone este repositório.
+3.  Instale as dependências: `pip install pandas sqlalchemy psycopg2-binary dbt-postgres`.
 
-### 1\. Clonar o Repositório
+### Passo 1: Carga Inicial (EL)
 
-```bash
-git clone https://github.com/[SEU_USUARIO]/[NOME_DO_PROJETO].git
-cd [NOME_DO_PROJETO]
-```
+Execute o notebook `notebooks/ELT_load.ipynb`. Isso lerá os CSVs da pasta `data/` e criará as tabelas `raw_vacinados_202X` no seu banco de dados.
 
-### 2\. Instalar Dependências
+### Passo 2: Configuração do dbt
 
-```bash
-pip install pandas sqlalchemy psycopg2-binary dbt-postgres
-```
-
-### 3\. Configurar o Banco de Dados (PostgreSQL)
-
-1.  Crie um novo banco de dados no seu PostgreSQL (ex: `projeto_banco_de_dados`).
-2.  **Importante:** Atualize a `DATABASE_URL` nos notebooks `ETL.ipynb` e `ELT_load.ipynb` com seu usuário, senha e nome do banco.
-    ```python
-    DATABASE_URL = 'postgresql://postgres:SUA_SENHA@localhost:5432/projeto_monitoria'
-    ```
-
-### 4\. Configurar o dbt
-
-1.  O `dbt` precisa de um arquivo `profiles.yml` para se conectar ao seu banco. Este arquivo **não** fica no projeto, ele fica na sua pasta de usuário.
-
-2.  Vá até `C:\Users\[SEU_USUARIO]\.dbt\` e crie/edite o arquivo `profiles.yml`.
-
-3.  Cole a configuração abaixo, substituindo os campos `pass` e `dbname` pelos seus:
-
-    ```yaml
-    transformacao_vacinados:
-      target: dev
-      outputs:
-        dev:
-          type: postgres
-          host: localhost
-          user: postgres
-          pass: SUA_SENHA_AQUI
-          port: 5432
-          dbname: projeto_monitoria
-          schema: public
-    ```
-
-## ▶️ Como Executar os Pipelines
-
-### Pipeline 1: ETL (Abordagem com Pandas)
-
-1.  Abra e execute todas as células do notebook:
-    `notebooks/ETL.ipynb`
-2.  Ao final, o notebook irá carregar o DataFrame final e limpo na tabela `vacinados_etl_final` no seu PostgreSQL.
-
-### Pipeline 2: ELT (Abordagem com dbt)
-
-Este pipeline tem duas etapas:
-
-**Etapa 1: Carga (EL)**
-
-1.  Abra e execute todas as células do notebook:
-    `notebooks/ELT.ipynb`
-2.  Isso carregará os 3 CSVs **brutos** em 3 tabelas separadas no PostgreSQL: `raw_vacinados_2022`, `raw_vacinados_2023` e `raw_vacinados_2024`.
-
-**Etapa 2: Transformação (T)**
-
-1.  Abra seu terminal e navegue até a pasta do projeto dbt:
+1.  Configure seu arquivo `profiles.yml` (geralmente em `~/.dbt/`) com as credenciais do seu PostgreSQL local.
+2.  No terminal, navegue até a pasta do projeto dbt:
     ```bash
     cd transformacao_vacinados
     ```
-2.  Teste sua conexão com o banco:
+3.  Teste a conexão:
     ```bash
     dbt debug
     ```
-3.  Execute o pipeline de transformação. O `dbt` irá ler os dados brutos, unificá-los, limpá-los e criar a tabela final `vacinados_etl_final`:
-    ```bash
-    dbt run
-    ```
 
-## 📊 Análise
+### Passo 3: Execução das Transformações
 
-Com a tabela `vacinados_etl_final` (criada por qualquer um dos pipelines) pronta no banco, podemos realizar as análises.
+Ainda no terminal, execute o comando para construir o Data Warehouse:
 
-*Exemplo de análise que pode ser feita:*
-
-```sql
-SELECT 
-    grupo,
-    ano_origem,
-    COUNT(id) AS total_doses
-FROM 
-    vacinados_etl_final
-GROUP BY 
-    grupo, ano_origem
-ORDER BY 
-    ano_origem, total_doses DESC;
+```bash
+dbt run
 ```
+
+*Isso criará todas as views de staging e as tabelas Fato e Dimensão finais.*
+
+-----
+
+## 📊 Resultados e Insights
+
+As consultas SQL na pasta `/analysis` demonstram o poder do modelo construído:
+
+1.  **Evolução Temporal:** Análise do volume de vacinação por ano e trimestre usando a `dim_tempo`.
+2.  **Logística de Distribuição:** Mapeamento de fabricantes de vacina por Distrito Sanitário usando `dim_vacina` e `dim_unidade`.
+3.  **Cobertura de Grupos:** Análise de vacinação em grupos prioritários usando `dim_paciente`.
+
+> **Nota sobre a Qualidade dos Dados:** Durante o processo de ELT, foi identificado que os arquivos de origem rotulados como 2023 e 2024 continham, majoritariamente, registros retroativos referentes a aplicações de 2022.
