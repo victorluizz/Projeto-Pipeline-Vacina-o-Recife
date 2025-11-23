@@ -4,10 +4,7 @@
 
 Este projeto implementa e compara duas arquiteturas fundamentais de Engenharia de Dados — **ETL Clássico** (Python/Pandas) e **ELT Moderno** (dbt/SQL) — para processar, higienizar e modelar dados públicos de vacinação.
 
-O diferencial deste projeto é a implementação final de uma **Modelagem Dimensional (Esquema Estrela)**
-
-[Image of star schema database diagram]
-, transformando milhões de registros brutos em um Data Warehouse otimizado para Business Intelligence (BI).
+O diferencial deste projeto é a implementação final de uma **Modelagem Dimensional (Esquema Estrela)** , transformando milhões de registros brutos em um Data Warehouse otimizado para Business Intelligence (BI).
 
 -----
 
